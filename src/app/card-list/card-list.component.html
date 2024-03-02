@@ -1,0 +1,95 @@
+<ul class="block-grid" id="jobs_list_container">
+    <li *ngFor="let card of cardList" (click)="openForm(card.id)"
+        class="block-grid-item border border-block-base-text border-opacity-15 min-h-[360px] items-center justify-center rounded overflow-hidden relative z-career-job-card-image">
+        <a class="block h-full w-full hover:bg-company-primary-text hover:bg-opacity-3 overflow-hidden group"
+            data-turbo="false" >
+            <div class="relative w-full overflow-hidden pb-2/3">
+                <div
+                    class="absolute inset-0 transition-transform duration-200 origin-center transform bg-block-base-text bg-opacity-15 group-hover:scale-105">
+                    <figure>
+                        <picture>
+                            <source srcset="{{card.logo}}" type="image/webp">
+
+                            <img src="{{card.logo}}" alt="Senior Project Manager image" loading="lazy" class="w-full">
+                        </picture>
+                    </figure>
+                </div>
+            </div>
+            <div class="flex flex-col justify-center p-3 text-center min-h-[180px]">
+                <span class="text-block-base-link company-link-style"
+                    title="Learners-1">{{card.organization_name}}</span>
+                <div class="mt-1 text-md">
+                    <!-- <span>R&amp;D (Sri Lanka)</span> -->
+
+                    <!-- <span class="mx-[2px]">&middot;</span> -->
+                    <!-- <br> -->
+                    <span>{{card.address}}</span>
+                    <br>
+                    <!-- <span class="mx-[2px]">&middot;</span> -->
+                    <span class="inline-flex items-center gap-x-2">
+                        {{card.rating}}
+                        <!-- <i class="w-4 h-5 text-xs fa fa-star"></i> -->
+                    </span>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
+
+<div *ngIf="isPopupOpen" class="popup t-font">
+    <div class="popup-content">
+        <span class="close" (click)="closePopup()">&times;</span>
+        <div class="container">
+
+            <form (ngSubmit)="submitForm()" class="w-full max-w-lg" #form="ngForm">
+
+                <!-- <div>
+                    <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Choose your
+                        Service</label>
+                    <select
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        name="serviceType" [(ngModel)]="formData.serviceType" required>
+                        <option value="" disabled selected>Select Service</option>
+                        <option value="get_new_license">Get New License</option>
+                        <option value="license_renewal">License Renewal</option>
+                        <option value="upgrade_to_heavy_vehicle">Upgrade to Heavy Vehicle</option>
+                        <option value="resit_for_exam">Resit for Exam</option>
+                        <option value="resit_for_trial">Resit for Trial</option>
+                    </select>
+                </div> -->
+
+                <div class="form-group" class="  mb-6 w-full max-w-lg">
+                    <div>
+
+                        
+                        <div class="form-group">
+                            <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Enter Your
+                                Name</label>
+                            <input type="text" placeholder="Full Name" name="number" id="" class="form-control  w-full "
+                                text-sm [(ngModel)]="formData.name" required>
+                        </div>
+
+                        <div>
+                            <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Enter Your
+                                Email</label>
+                            <input type="email" placeholder="Email" name="" id="">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Enter Your
+                                Phone Number</label>
+                            <input type="text" placeholder="Number" name="number" id="" class="form-control  w-full "
+                                text-sm [(ngModel)]="formData.number" required>
+                        </div>
+
+
+
+                        <button type="submit" class="btn-search">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
