@@ -12,6 +12,7 @@ import { CardListComponent } from './card-list/card-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ViewPageComponent,
     CardListComponent,
     FormComponent,
+    ReviewsComponent,
   ],
   imports: [
     BrowserModule,

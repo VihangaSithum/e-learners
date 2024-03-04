@@ -23,7 +23,7 @@
                 <div>
                     <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Vehicle
                         category</label>
-                    <ng-multiselect-dropdown class="text-sm  w-full " [settings]="settings" [data]="vehicleCat"
+                    <ng-multiselect-dropdown class="text-sm  w-full " (ngModelChange)="formData.vehicleCategory = $event" [settings]="settings" [data]="vehicleCat"
                         formControlName="myItems">
                     </ng-multiselect-dropdown>
                 </div>

@@ -33,9 +33,14 @@ export class DataService extends BehaviorSubject<any[]> {
     }
 
     //post contact details
-    public postData(vehicle_category: string, service_type: string, price_range: string, mobile_no: string, name: string, email: string, organization_id: number): Observable<any> {
-
-        return this.http.post(`${this.envUrl}/leads`, { vehicle_category,service_type, price_range, mobile_no,  name, email,  organization_id }).pipe(
+    public postData(vehicle_category: string, service_type: string, price_range: string, personal_trainer_type: string, mobile_no: string, name: string, email: string, organization_id: number): Observable<any> {
+        let personal_trainer = false;
+        if(personal_trainer_type === "true"){
+            personal_trainer = true;
+        }
+        vehicle_category = "A1, B, B1";
+        const district = "Colombo";
+        return this.http.post(`${this.envUrl}/leads`, { district, vehicle_category,service_type, personal_trainer, price_range, mobile_no,  name, email,  organization_id }).pipe(
             map(response => (response as Array<any>)));
     }
 

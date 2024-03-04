@@ -17,19 +17,24 @@ export class CardListComponent implements OnInit {
 
   submitForm() {
 
+    console.log(this.formData)
 
     this.sharedDataService.currentCardList.subscribe(cardList => {
       this.cardList = cardList;
     });
+    console.log(this.cardList[0].personal_trainer)
 
-    this.dataService.postData(this.cardList[0].vehicle_category,
-      this.cardList[0].service_type, this.cardList[0].price_range,
-      this.formData.name, this.formData.email, this.formData.number,
+    this.dataService.postData(
+      this.cardList[0].vehicle_category,
+      this.cardList[0].service_type,
+      this.cardList[0].price_range,
+      this.cardList[0].personal_trainer,
+      this.formData.number,
+      this.formData.name,
+      this.formData.email,
       this.organizationId).subscribe();
 
   }
-
-
 
   openForm(id: number) {
     this.organizationId = id;

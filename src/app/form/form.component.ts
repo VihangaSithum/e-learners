@@ -26,7 +26,7 @@ export class FormComponent implements OnInit {
 
   formData = {
     serviceType: '',
-    vehicleCategory: '',
+    vehicleCategory: [],
     district: '',
     budget: '',
     personalTrainer: "false",
@@ -41,6 +41,7 @@ export class FormComponent implements OnInit {
       this.formData.personalTrainer = "false"
     }
     this.sharedDataService.changeCardListToEmpty();
+    console.log(this.formData)
 
     this.dataService.fetchData(this.formData.district, this.formData.serviceType, this.formData.personalTrainer, this.formData.budget).subscribe(result => {
       const modifiedData = result.data.map((item: any) => {
@@ -48,6 +49,7 @@ export class FormComponent implements OnInit {
           ...item, service_type: this.formData.serviceType,
           vehicle_category: this.formData.vehicleCategory,
           price_range: this.formData.budget,
+          personal_trainer: this.formData.personalTrainer,
         };
       });
 
